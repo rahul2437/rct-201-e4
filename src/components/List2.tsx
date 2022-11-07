@@ -1,28 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import useNumberList from "../hooks/useNumberList";
 
 type List2Props = {
   // TODO
 };
 const List2 = (props: List2Props) => {
+
+  const {list,appendEnd} = useNumberList([4,5]);
+
+  const [val,setVal] = useState<number>(0);
+
   return (
     <div data-testid="list2">
-      <h3 data-testid="list2-label">{/* Label */}</h3>
+      <h3 data-testid="list2-label">List 2</h3>
 
       {/* Iterate List and wrap the element div below inside */}
-      <div data-testid="list2-element">{/* Each element in a list */}</div>
+      <div data-testid="list2-element">{list.join(" ")}</div>
 
-      <input data-testid="list2-input" />
-      <button data-testid="list2-btn-append-end">
-        {/* Button to append new number to the end of the list */}
+      <input data-testid="list2-input" value={val} onChange={(e)=>setVal(parseInt(e.target.value))} />
+      <button data-testid="list2-btn-append-end"
+        onClick={()=>appendEnd(val)}
+      >
+        Append End
       </button>
       <button data-testid="list2-btn-pop-start">
-        {/* Button to  pop first element of the list */}
+        Pop Start
       </button>
       <button data-testid="list2-btn-clear">
-        {/* Button to  clear the list */}
+        Clear
       </button>
       <button data-testid="list2-btn-reset">
-        {/* Button to  reset the list to initialValue */}
+        Reset
       </button>
     </div>
   );
