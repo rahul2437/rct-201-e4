@@ -26,3 +26,5 @@ yarn-error.log*
 # Ignore for testing check
 cypress
 src/__tests__/
+# Local Netlify folder
+.netlify
